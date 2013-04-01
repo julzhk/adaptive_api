@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load bootstrap_toolkit %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Coke Adaptive API Reporting</title>
+    <meta name="description" content="">
+    <meta name="author" content="Julian Harley">
+    {% bootstrap_stylesheet_tag %}
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="static/adaptive/bootstrap_theme.css" />
+    {% bootstrap_javascript_tag %}
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/">Coke Adaptive API Reporting</a>
+            <ul class="nav">
+                <li><a href="url index %}" class="">Home</a></li>
+                <li><a href="/admin">Admin</a></li>
+                <li><a href="url nuke %}">Logout</a></li>
+                <li class="dropdown">
+                    {#                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Forms<b class="caret"></b></a>#}
+                    {#                    <ul class="dropdown-menu">#}
+                    {#                        <li><a class="nav" href="url demo_app.views.demo_form %}?layout=vertical">Vertical</a></li>#}
+                    {#                        <li><a href="url demo_app.views.demo_form %}?layout=horizontal">Horizontal</a></li>#}
+                    {#                        <li><a href=" url demo_app.views.demo_form_inline %}?layout=inline">Inline</a></li>#}
+                    {#                        <li><a href=" url demo_app.views.demo_form_inline %}?layout=search">Search</a></li>#}
+                    {#                        <li><a href=" url demo_app.views.demo_form_with_template %}?layout=horizontal">Using template</a></li>#}
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    {% bootstrap_messages %}
+
+    {% block content %}Empty page{% endblock %}
+    {% block footer %}{% endblock %}
+    <p><hr></p>
+
+    <footer class="row">
+        <div class="span6">
+            <p>
+            </p>
+        </div>
+        <div class="span6" style="text-align:right">
+            <p>
+                footer
+            </p>
+        </div>
+    </footer>
+
+</div> <!-- container -->
+
+</body>
+</html>

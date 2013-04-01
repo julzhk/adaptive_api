@@ -80,6 +80,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    '../message_api/static',
 )
 
 # List of finder classes that know how to find static files in
@@ -111,7 +112,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'adaptive.urls'
-
+ADAPTIVE_API_URL = 'http://adaptive-test-api.herokuapp.com/tweets.json'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'adaptive.wsgi.application'
 
