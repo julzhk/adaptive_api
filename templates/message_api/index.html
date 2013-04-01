@@ -1,5 +1,34 @@
 {% extends 'message_api/base.html' %}
 
 {% block content %}
-    home
+    <table>
+    <thead>
+    <tr>
+        <td>
+            User&apos;s Handle
+        </td>
+        <td>
+            Text
+        </td>
+        <td>
+            Sentiment
+        </td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for message in allmessages %}
+        <tr>
+            <td>
+             {{ message.user_handle }}
+            </td>
+            <td>
+                {{ message.message }}
+            </td>
+            <td>
+                {{ message.sentiment }}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
 {% endblock %}
