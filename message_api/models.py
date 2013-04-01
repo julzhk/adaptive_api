@@ -28,6 +28,13 @@ class Message(models.Model):
         self.times_seen += 1
         self.save()
 
+    @property
+    def is_target_message(self):
+        for target_word in ['coke','coca-cola','diet cola']:
+            if target_word in self.message.lower():
+                return True
+        return False
+
 
     @classmethod
     def adaptive_api(cls):

@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from message_api.models import Message
 
 def index(request):
-        allmessages = Message.objects.all()
+        allmessages = Message.objects.all().order_by('-sentiment')
         return render_to_response(
                 'message_api/index.html',
                 RequestContext(request,

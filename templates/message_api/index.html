@@ -22,7 +22,11 @@
              {{ message.user_handle }}
             </td>
             <td>
+                    <span {% if message.is_target_message %}
+                            style="background-color: red;"
+                    {% endif %} >
                 {{ message.message }}
+                </span>
             </td>
             <td>
                 {{ message.sentiment }}
