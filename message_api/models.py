@@ -19,9 +19,14 @@ class Message(models.Model):
     user_handle = models.CharField(max_length=140)
     sentiment = models.DecimalField(decimal_places=2,max_digits=20)
     updated_at = models.DateTimeField(blank=True)
+    times_seen = models.IntegerField(default=1)
 
     def __unicode__(self):
         return '%s (%s)' % (self.message, self.user_handle)
+
+    def increment_times_seen(self):
+        self.times_seen += 1
+        self.save()
 
 
     @classmethod
@@ -37,15 +42,24 @@ class Message(models.Model):
 
 
     @classmethod
+    def create_new_message_object(cls, new_message_data):
+            try:
+                already_added = Message.objects.get(message=new_message_data['message'])
+                already_added.increment_times_seen()
+                return
+            except Message.DoesNotExist:
+                new_message_data = rename_id_field(new_message_data)
+                new_message = Message()
+                for k in new_message_data:
+                    setattr(new_message, k, new_message_data[k])
+                new_message.save()
+
+
+    @classmethod
     def populate_from_api(cls):
         data = Message.adaptive_api()
-        for item in data:
-            item_data = rename_id_field(item)
-            for item in item_data:
-                new_message = Message()
-                for k in item_data:
-                    setattr(new_message, k, item_data[k])
-                new_message.save()
+        for new_message in data:
+            cls.create_new_message_object(new_message)
 
 
 

@@ -47,5 +47,17 @@ class AdaptiveApiTest(TestCase):
         print m.message
         self.assertEqual(m.message,mock_data_source[0]['message'])
 
+    def test_duplicate_api_data(self):
+        mock_data_source2 = [
+            {"created_at": "2012-09-27T16:10:34Z", "followers": 3, "id": 2, "message": "Duplicate coke message2!",
+             "sentiment": 0.9, "updated_at": "2012-09-27T16:10:34Z", "user_handle": "@coke_lvr"},
+            {"created_at": "2012-09-27T16:10:34Z", "followers": 3, "id": 2, "message": "Duplicate coke message2!",
+             "sentiment": 0.9, "updated_at": "2012-09-27T16:10:34Z", "user_handle": "@coke_lvr"}
+        ]
+        Message.adaptive_api = MagicMock(return_value=mock_data_source2)
+        Message.populate_from_api()
+        m = Message.objects.get(message=mock_data_source2[0]['message'])
+        self.assertEqual(m.times_seen,2)
+
 
 
