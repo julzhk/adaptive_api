@@ -7,7 +7,7 @@ class Message(models.Model):
     followers = models.IntegerField()
     message = models.CharField(max_length=140)
     user_handle = models.CharField(max_length=140)
-    sentiment = models.DecimalField()
+    sentiment = models.DecimalField(decimal_places=2,max_digits=20)
     updated_at = models.TimeField()
 
     def __unicode__(self):
