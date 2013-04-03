@@ -1,38 +1,8 @@
 {% extends 'message_api/base.html' %}
 
 {% block content %}
-    <table>
-    <thead>
-    <tr>
-        <td>
-            User&apos;s Handle
-        </td>
-        <td>
-            Text
-        </td>
-        <td>
-            Sentiment
-        </td>
-    </tr>
-    </thead>
-    <tbody>
-    {% for message in allmessages %}
-        <tr>
-            <td>
-             {{ message.user_handle }}
-            </td>
-            <td>
-                    <span {% if message.is_target_message %}
-                            style="background-color: red;"
-                    {% endif %} >
-                {{ message.message }}
-                </span>
-            </td>
-            <td>
-                {{ message.sentiment }}
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-    </table>
+    <h1>
+    Messages about Coke
+    </h1>
+
 {% endblock %}

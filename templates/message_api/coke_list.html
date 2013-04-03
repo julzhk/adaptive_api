@@ -1,0 +1,43 @@
+{% extends 'message_api/base.html' %}
+
+{% block content %}
+    <table class="table table-striped table-bordered table-condensed" >
+    <thead>
+    <tr>
+        <th>
+            User&apos;s Handle
+        </th>
+        <th>
+            Message
+        </th>
+        <th>
+            Sentiment
+        </th>
+        <th>
+            Counter
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for message in allmessages %}
+        <tr {% if message.is_target_message %}
+                    style="color: red;
+                    background-color: darkslategray;"
+                {% endif %} >
+            <td>
+             {{ message.user_handle }}
+            </td>
+            <td>
+                {{ message.message }}
+            </td>
+            <td>
+                {{ message.sentiment }}
+            </td>
+            <td>
+                {{ message.times_seen}}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}
