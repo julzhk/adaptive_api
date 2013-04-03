@@ -24,4 +24,17 @@ def coke_list(request):
                }
             ))
 
+def user_details(request):
+    user_handle = request.GET.get('user_handle')
+    if not user_handle:
+        return HttpResponseRedirect('/')
+    user_posts = Message.objects.filter(user_handle = '@%s' % user_handle)
+    return render_to_response(
+            'message_api/user_details.html',
+            RequestContext(request,
+               {
+                   'user_posts':user_posts
+               }
+            ))
+
 

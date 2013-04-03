@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
-from message_api.views import index, coke_list
+from message_api.views import index, coke_list, user_details
 from django.contrib import admin
 admin.autodiscover()
 
@@ -14,7 +14,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^coke_list/', coke_list, name='coke_list_page'),
+    url(r'^coke_list', coke_list, name='coke_list_page'),
+    url(r'^user_details', user_details, name='user_details'),
     url(r'', index, name='index'),
 )
 

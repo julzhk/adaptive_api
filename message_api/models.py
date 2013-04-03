@@ -35,6 +35,13 @@ class Message(models.Model):
                 return True
         return False
 
+    @property
+    def user_name(self):
+        '''
+            simple way to strip the preceeding @ from user names
+        '''
+        return self.user_handle[1:]
+
 
     @classmethod
     def adaptive_api(cls):

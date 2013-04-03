@@ -25,7 +25,9 @@
                     background-color: darkslategray;"
                 {% endif %} >
             <td>
-             {{ message.user_handle }}
+                <a href="{% url 'user_details'%}?user_handle={{ message.user_name }}">
+                    {{ message.user_handle }}
+                </a>
             </td>
             <td>
                 {{ message.message }}

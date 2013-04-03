@@ -87,3 +87,13 @@ class AdaptiveApiTest(TestCase):
         self.assertTrue(is_coke_message.is_target_message)
         is_not_coke_message = Message.objects.get(message=mock_data_source3[1]['message'])
         self.assertFalse(is_not_coke_message.is_target_message)
+
+    def test_user_name(self):
+        mock_data_source3 = [
+            {"created_at": "2012-09-27T16:10:34Z", "followers": 3, "id": 2, "message": "A coke message!",
+             "sentiment": 0.9, "updated_at": "2012-09-27T16:10:34Z", "user_handle": "@coke_lvr"}
+        ]
+        Message.adaptive_api = MagicMock(return_value=mock_data_source3)
+        Message.populate_from_api()
+        message = Message.objects.get(message=mock_data_source3[0]['message'])
+        self.assertTrue(message.user_name == 'coke_lvr')
